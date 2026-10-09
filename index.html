@@ -72,6 +72,159 @@
 
 }
 
+/* ======================================== */
+/* DARK MODE                                 */
+/* ======================================== */
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Background utama */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Section yang menggunakan bg-light */
+body.dark-mode .bg-light {
+    background-color: #181818 !important;
+}
+
+/* Navbar */
+body.dark-mode .navbar {
+    background-color: #181818 !important;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+    color: #f1f1f1 !important;
+}
+
+/* Tombol hamburger */
+body.dark-mode .navbar-toggler {
+    background-color: #f1f1f1;
+}
+
+/* Card Produk */
+body.dark-mode .card {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    border-color: #333;
+}
+
+body.dark-mode .card-title {
+    color: #ffffff;
+}
+
+body.dark-mode .card-text {
+    color: #cccccc;
+}
+
+/* Jangan mengubah gambar */
+body.dark-mode img {
+    filter: none;
+}
+
+/* Modal */
+body.dark-mode .modal-content {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: #333;
+}
+
+/* Tombol close pada modal */
+body.dark-mode .btn-close {
+    filter: invert(1);
+}
+
+/* FAQ */
+body.dark-mode .accordion-item {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    border-color: #333;
+}
+
+body.dark-mode .accordion-button {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .accordion-button:not(.collapsed) {
+    background-color: #292929;
+    color: #ffffff;
+}
+
+body.dark-mode .accordion-button::after {
+    filter: invert(1);
+}
+
+/* Text secondary */
+body.dark-mode .text-secondary {
+    color: #bbbbbb !important;
+}
+
+/* Tombol light */
+body.dark-mode .btn-light {
+    background-color: #292929;
+    color: #ffffff;
+    border-color: #555;
+}
+
+/* Tombol dark */
+body.dark-mode .btn-dark {
+    background-color: #f1f1f1;
+    color: #121212;
+    border-color: #f1f1f1;
+}
+
+/* Tombol outline dark */
+body.dark-mode .btn-outline-dark {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+/* Offcanvas */
+body.dark-mode .offcanvas {
+    background-color: #181818;
+    color: #f1f1f1;
+}
+
+body.dark-mode .offcanvas .btn-close {
+    filter: invert(1);
+}
+
+/* Toast */
+body.dark-mode .toast {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+body.dark-mode .toast-header {
+    background-color: #292929;
+    color: #ffffff;
+}
+
+/* Garis / border */
+body.dark-mode .border-bottom {
+    border-color: #444 !important;
+}
+
+/* Tombol Dark Mode */
+body.dark-mode #btnDarkMode {
+    background-color: #f1f1f1;
+    color: #121212;
+}
+
 </style>
 
 </head>
@@ -137,6 +290,12 @@
                     </span>
 
                 </button>
+
+                <!-- Tombol Dark Mode -->
+                <button id="btnDarkMode" class="btn btn-outline-secondary" type="button">
+                    <i id="iconDarkMode" class="bi bi-moon-fill"></i>
+                    <span id="textDarkMode">Dark</span>
+                    </button>
 
                 <button class="btn btn-dark"
                     type="button"
@@ -993,6 +1152,39 @@
 
     // Tampilkan kondisi awal
     tampilkanKeranjang();
+
+    // ========================================
+// DARK MODE
+// ========================================
+
+let btnDarkMode = document.getElementById("btnDarkMode");
+let iconDarkMode = document.getElementById("iconDarkMode");
+let textDarkMode = document.getElementById("textDarkMode");
+
+// Tombol Dark Mode
+btnDarkMode.addEventListener("click", function () {
+
+    // Tambahkan / hapus dark-mode pada body
+    document.body.classList.toggle("dark-mode");
+
+    // Cek apakah sedang dark mode
+    if (document.body.classList.contains("dark-mode")) {
+
+        // Ubah icon
+        iconDarkMode.className = "bi bi-sun-fill";
+
+        // Ubah tulisan
+        textDarkMode.innerText = "Light";
+
+    } else {
+
+        // Kembalikan icon
+        iconDarkMode.className = "bi bi-moon-fill";
+
+        // Kembalikan tulisan
+        textDarkMode.innerText = "Dark";
+    }
+});
 
 </script>
 
